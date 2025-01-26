@@ -1,12 +1,10 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.hilt.android)
-    alias(libs.plugins.ksp)
 }
 
 android {
-    namespace = "dutta.pritom.gamelist.data"
+    namespace = "pritom.dutta.common"
     compileSdk = 35
 
     defaultConfig {
@@ -39,22 +37,6 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
-
-    implementation(libs.logging.interceptor){
-        exclude(group = "org.json", module = "json")
-    }
-    implementation(libs.bundles.networking)
-    implementation(libs.timber)
-
-
-    //Hilt
-    implementation(libs.hilt.android)
-    ksp(libs.hilt.android.compiler)
-
-    //Own
-    implementation(project(":features:gamelist:domain"))
-
-    //Testing Lib
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

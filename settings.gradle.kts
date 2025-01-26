@@ -16,6 +16,7 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven(url = "https://jitpack.io")
     }
 }
 
@@ -24,3 +25,4 @@ include(":app")
 include(":features:gamelist:data")
 include(":features:gamelist:domain")
 include(":features:gamelist:ui")
+include(":common")
