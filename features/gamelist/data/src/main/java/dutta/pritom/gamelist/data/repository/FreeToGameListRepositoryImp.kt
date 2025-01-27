@@ -8,6 +8,7 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import pritom.dutta.common.core.Resource
+import timber.log.Timber
 import javax.inject.Inject
 
 class FreeToGameListRepositoryImp @Inject constructor(private val api: FreeGameApi) :
@@ -15,10 +16,16 @@ class FreeToGameListRepositoryImp @Inject constructor(private val api: FreeGameA
 
     override fun fetchListFreeToGame() = flow {
         emit(Resource.Loading())
-        val res = api.fetchFreeToGame().map { it.toFreeGame() }
-        emit(Resource.Success(res))
+        try {
+            val res = api.fetchFreeToGame().map { it.toFreeGame() }
+            emit(Resource.Success(res))
+        } catch (e: Exception) {
+            emit(Resource.Error(e.message))
+            Timber.e("fetchListFreeToGame: ${e.message}")
+        }
     }.flowOn(IO)
         .catch {
             emit(Resource.Error(it.message))
+            Timber.e("fetchListFreeToGame: ${it.message}")
         }
 }

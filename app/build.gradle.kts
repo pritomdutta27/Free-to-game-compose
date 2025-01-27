@@ -53,6 +53,8 @@ dependencies {
     implementation(libs.androidx.material3)
 
     implementation(libs.bundles.lifecycle)
+    implementation(libs.timber)
+
 
     implementation(libs.hilt.android)
     implementation(libs.androidx.hilt.navigation.compose)
