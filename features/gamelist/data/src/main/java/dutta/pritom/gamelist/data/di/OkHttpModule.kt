@@ -1,11 +1,14 @@
 package dutta.pritom.gamelist.data.di
 
+import com.ihsanbal.logging.Level
+import com.ihsanbal.logging.LoggingInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import okhttp3.internal.platform.Platform
 import okhttp3.logging.HttpLoggingInterceptor
 import timber.log.Timber
 import java.util.concurrent.TimeUnit
@@ -18,19 +21,19 @@ object OkHttpModule {
     @Provides
     @Singleton
     fun provideLoggerInterceptor(): Interceptor {
-        val interceptor = HttpLoggingInterceptor { message -> Timber.e(message) }
-        interceptor.apply { interceptor.level = HttpLoggingInterceptor.Level.HEADERS }
-        interceptor.apply { interceptor.level = HttpLoggingInterceptor.Level.BODY }
-        return interceptor
+//        val interceptor = HttpLoggingInterceptor { message -> Timber.e(message) }
+//        interceptor.apply { interceptor.level = HttpLoggingInterceptor.Level.HEADERS }
+//        interceptor.apply { interceptor.level = HttpLoggingInterceptor.Level.BODY }
+//        return interceptor
 
-//        val builder = LoggingInterceptor.Builder()
-//            .setLevel(Level.BASIC)
-//            .log(Platform.INFO)
-//            .tag("Free to game")
-//            .request("Request")
-//            .response("Response")
-//        builder.isDebugAble = true
-//        return builder.build()
+        val builder = LoggingInterceptor.Builder()
+            .setLevel(Level.BASIC)
+            .log(Platform.INFO)
+            .tag("Free to game")
+            .request("Request")
+            .response("Response")
+        builder.isDebugAble = true
+        return builder.build()
     }
 
     @Provides

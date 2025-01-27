@@ -40,6 +40,9 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.kotlin.coroutines.android)
+
+    implementation(libs.bundles.lifecycle)
+    implementation(libs.timber)
     //Own
     implementation(project(":common"))
     //Hilt

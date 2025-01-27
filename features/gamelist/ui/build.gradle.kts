@@ -45,6 +45,7 @@ dependencies {
 
     //Own
     implementation(project(":features:gamelist:domain"))
+    implementation(project(":common"))
 
     //Testing
     testImplementation(libs.junit)

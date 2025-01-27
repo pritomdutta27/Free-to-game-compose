@@ -8,7 +8,7 @@ import javax.inject.Inject
 
 class GetFreeToGameUseCase @Inject constructor(private val repository: FreeToGameListRepository) {
 
-    suspend fun getListOfFreeToGame(): Flow<Resource<List<FreeGame>>> {
+    operator fun invoke(): Flow<Resource<List<FreeGame>>> {
         return repository.fetchListFreeToGame()
     }
 
