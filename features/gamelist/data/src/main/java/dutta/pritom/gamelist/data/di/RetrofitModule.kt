@@ -6,7 +6,9 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import dutta.pritom.gamelist.data.datasource.remote.FreeGameApi
 import okhttp3.OkHttpClient
+import pritom.dutta.common.utils.Constants
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
@@ -22,7 +24,7 @@ object RetrofitModule {
         factory: GsonConverterFactory,
     ): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("")
+            .baseUrl(Constants.BASE_URL)
             .client(okHttpClient)
             .addConverterFactory(factory)
 //            .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
@@ -38,5 +40,11 @@ object RetrofitModule {
     fun provideGson(): Gson {
         val gsonBuilder = GsonBuilder()
         return gsonBuilder.create()
+    }
+
+    @Provides
+    @Singleton
+    fun provideApiService(retrofit: Retrofit): FreeGameApi {
+        return retrofit.create(FreeGameApi::class.java)
     }
 }

@@ -15,7 +15,7 @@ android {
         minSdk = 24
         targetSdk = 35
         versionCode = 1
-        versionName = "1.0"
+        versionName = "1.0.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -54,6 +54,12 @@ dependencies {
 
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)
+
+    //Own
+    implementation(project(":features:gamelist:domain"))
+    implementation(project(":features:gamelist:data"))
+    implementation(project(":features:gamelist:ui"))
+    implementation(project(":common"))
 
     //Test
     testImplementation(libs.junit)

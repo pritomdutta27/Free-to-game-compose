@@ -26,11 +26,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "17"
     }
 }
 
@@ -39,7 +39,7 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
-
+    implementation(libs.kotlin.coroutines.android)
     implementation(libs.logging.interceptor){
         exclude(group = "org.json", module = "json")
     }
@@ -53,6 +53,7 @@ dependencies {
 
     //Own
     implementation(project(":features:gamelist:domain"))
+    implementation(project(":common"))
 
     //Testing Lib
     testImplementation(libs.junit)
